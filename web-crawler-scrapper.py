@@ -1,10 +1,30 @@
-import requests
-from bs4 import BeautifulSoup
 import re
 import sys
-from prettytable import PrettyTable
-from colorama import Fore, Back, Style, init
-init()
+
+#----------------------------------------------------------------------------------------importing extra modules-----------------------------
+
+try:
+    from prettytable import PrettyTable
+except:
+    print ("Pretty table module is not installed in your working environment.")
+
+try: 
+    import requests
+except:
+    print("Requests module is not installed in your working environment.")
+
+try:
+    from bs4 import BeautifulSoup
+except:
+    print("Beautiful Soup module is not installed in your working environment.")
+
+try:
+    from colorama import Fore, Back, Style, init
+    init()
+except:
+    print("Colorama module is not installed in your working environment.")
+
+
 
 #-------------------------------------------------------------------------------------function handles get request----------------
 def browse(page_url):
