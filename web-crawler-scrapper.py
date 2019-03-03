@@ -31,15 +31,28 @@ def scorecard(soup):
     soup_1 = soup.find("div",{"class":"cb-scrd-lft-col"}).findAll("div",{"class":"cb-ltst-wgt-hdr"})
 
     #-------------------------------------Batsman 1 Table----------------------------------------------
+    print("\n")
     soup = soup_1[0].get_text()
+    print(Fore.RED + Style.BRIGHT + soup[:soup.index("Batsman")] + Fore.GREEN  +Style.BRIGHT)
     soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d*)",soup[soup.index('SR')+2:])
     table = PrettyTable(['Batsman','R','B','4s','6s','SR'])
     for i in soup:
         table.add_row(i)
     print(table)
 
+    #---------------------------------------Bowler 2 Table --------------------------------------------------------
+    print("\n")
+    soup = soup_1[4].get_text()
+    soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d+)",soup[soup.index('ECO')+3:])
+    table = PrettyTable(['Bowler','O','M','R','W','NB','WD','ECO'])
+    for i in soup:
+        table.add_row(i)
+    print(table)
+
     #--------------------------------------Batsman 2 Table -------------------------------------------
+    print("\n")
     soup = soup_1[3].get_text()
+    print(Fore.RED + Style.BRIGHT + soup[:soup.index("Batsman")]+Fore.GREEN + Style.BRIGHT)
     soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d*)",soup[soup.index('SR')+2:])
     table = PrettyTable(['Batsman','R','B','4s','6s','SR'])
     for i in soup:
@@ -47,20 +60,16 @@ def scorecard(soup):
     print(table)
 
     #-------------------------------------Bowler 1 Table -----------------------------------------------------
+    print("\n")
     soup = soup_1[1].get_text()
     soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d+)",soup[soup.index('ECO')+3:])
-    table = PrettyTable(['Bolwer','O','M','R','W','NB','WD','ECO'])
+    table = PrettyTable(['Bowler','O','M','R','W','NB','WD','ECO'])
     for i in soup:
         table.add_row(i)
     print(table)
+    print("\n"+Style.RESET_ALL)
 
-    #---------------------------------------Bowler 2 Table --------------------------------------------------------
-    soup = soup_1[4].get_text()
-    soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d+)",soup[soup.index('ECO')+3:])
-    table = PrettyTable(['Bolwer','O','M','R','W','NB','WD','ECO'])
-    for i in soup:
-        table.add_row(i)
-    print(table)
+    
 
     #-------------------------------------------------------------------------------------------------------------END OF SCORECARD-----------------------------
     
@@ -121,11 +130,11 @@ if __name__ == "__main__":
         if user_1 in range(1,3):
 
             if user_1 == 1:
-                soup = browse(data[user][user_1-1])
-                soup = live_score(soup)
+                #soup = browse(data[user][user_1-1])
+                #soup = live_score(soup)
                 #live_score(soup)            
                 #print (data[user][user_1-1])
-                print (soup)
+                print ("Coming SOON")
             elif user_1 == 2:
                 soup = browse(data[user][user_1-1])
                 scorecard(soup)
