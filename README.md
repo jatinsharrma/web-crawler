@@ -12,4 +12,4 @@ Used colorama for making terminal colorful.
 
 
 
-Note : For now Live Score option don't work because no live match to test that.
+Note : For now Live Score option is very basic, because no live match to test advance.
