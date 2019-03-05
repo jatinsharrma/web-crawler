@@ -68,7 +68,7 @@ def time_expired():
 #----------------------------------------------------------------------------------------function for extracting live score--------------------
 def live_score(curr_score):
     try:
-        print("[%s]\r"%curr_score[user-1].get_text() ,end="")
+        print("[%s]"%curr_score[user-1].get_text() ,end="\r")
         sleep(10)
         time_expired()
     except KeyboardInterrupt:
@@ -80,50 +80,59 @@ def scorecard(soup):
     soup_1 = soup.find("div",{"class":"cb-scrd-lft-col"}).findAll("div",{"class":"cb-ltst-wgt-hdr"})
 
     #-------------------------------------Batsman 1 Table----------------------------------------------
-    print("\n")
-    soup = soup_1[0].get_text()
-    print(Fore.RED + Style.BRIGHT + soup[:soup.index("Batsman")] + Fore.GREEN  +Style.BRIGHT)
-    soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d*)",soup[soup.index('SR')+2:])
-    table = PrettyTable(['Batsman','R','B','4s','6s','SR'])
+    try:
+        print("\n")
+        soup = soup_1[0].get_text()
+        print(Fore.RED + Style.BRIGHT + soup[:soup.index("Batsman")] + Fore.GREEN  +Style.BRIGHT)
+        soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d*)",soup[soup.index('SR')+2:])
+        table = PrettyTable(['Batsman','R','B','4s','6s','SR'])
 
-    for i in soup:
-        table.add_row(i)
+        for i in soup:
+            table.add_row(i)
 
-    print(table)
+        print(table)
+    except:
+        pass
 
     #---------------------------------------Bowler 2 Table --------------------------------------------------------
-    print("\n")
-    soup = soup_1[4].get_text()
-    soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d+)",soup[soup.index('ECO')+3:])
-    table = PrettyTable(['Bowler','O','M','R','W','NB','WD','ECO'])
+    try:
+        print("\n")
+        soup = soup_1[4].get_text()
+        soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d+)",soup[soup.index('ECO')+3:])
+        table = PrettyTable(['Bowler','O','M','R','W','NB','WD','ECO'])
 
-    for i in soup:
-        table.add_row(i)
+        for i in soup:
+            table.add_row(i)
 
-    print(table)
+        print(table)
+    except: pass
 
     #--------------------------------------Batsman 2 Table -------------------------------------------
-    print("\n")
-    soup = soup_1[3].get_text()
-    print(Fore.RED + Style.BRIGHT + soup[:soup.index("Batsman")]+Fore.GREEN + Style.BRIGHT)
-    soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d*)",soup[soup.index('SR')+2:])
-    table = PrettyTable(['Batsman','R','B','4s','6s','SR'])
+    try:
+        print("\n")
+        soup = soup_1[3].get_text()
+        print(Fore.RED + Style.BRIGHT + soup[:soup.index("Batsman")]+Fore.GREEN + Style.BRIGHT)
+        soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d*)",soup[soup.index('SR')+2:])
+        table = PrettyTable(['Batsman','R','B','4s','6s','SR'])
 
-    for i in soup:
-        table.add_row(i)
+        for i in soup:
+            table.add_row(i)
 
-    print(table)
+        print(table)
+    except:pass
 
     #-------------------------------------Bowler 1 Table -----------------------------------------------------
-    print("\n")
-    soup = soup_1[1].get_text()
-    soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d+)",soup[soup.index('ECO')+3:])
-    table = PrettyTable(['Bowler','O','M','R','W','NB','WD','ECO'])
+    try:
+        print("\n")
+        soup = soup_1[1].get_text()
+        soup = re.findall(r"([a-zA-Z\s()&\/]*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\s*)(\d+\.\d+)",soup[soup.index('ECO')+3:])
+        table = PrettyTable(['Bowler','O','M','R','W','NB','WD','ECO'])
 
-    for i in soup:
-        table.add_row(i)
+        for i in soup:
+            table.add_row(i)
 
-    print(table)
+        print(table)
+    except:pass
     print("\n"+Style.RESET_ALL)
 
     
