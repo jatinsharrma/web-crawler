@@ -2,7 +2,7 @@
 Web crawler to extract live cricket match score
 
 
-This crawlers cricbuzz. This only crwaler the all match page, live score page and scorecard page. 
+This crawl cricbuzz. This only crwaler the all match page, live score page and scorecard page. 
 
 This is just for educational purpouse so it should not be used against cricbuzz for any malacious activities.
 
